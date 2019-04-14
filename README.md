@@ -1,2 +1,2 @@
 # cpp-projects
-Repository for my C++ projects; each C++ project is in a separate directory.
+Repository for my C and C++ projects; each project is in a separate directory.
