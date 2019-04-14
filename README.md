@@ -1,4 +1,4 @@
-# How About a Nice Cup of _Java_?
+# Hello to the World of C!
 ```c++
 int main() 
 {
