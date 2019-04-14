@@ -1,0 +1,68 @@
+/*****************************************************************************
+* Programmer: Ethan Hann                                                     *
+*                                                                            *
+* Course: CSCI 4534                                                          *
+*                                                                            *
+* Date: October 31, 2017                                                     *
+*                                                                            *
+* Assignment: Programming Assignment #3: Round Robin CPU Scheduler           *
+*                                                                            *
+* Environment: Notepad++ & Sapphire UNIX Server                              *
+*                                                                            *
+* Files Included: server.c & client.c                                        *
+*                                                                            *
+* Purpose: To simulate a short-term round robin CPU scheduler using a server *
+*          and multiple clients                                              *
+*                                                                            *
+* Input: From clients to server: an integer named burst, the name of its     *
+*        private FIFO, and arrival time                                      *
+*        From server: the number of clients and an integer named timeQuant   *
+*                                                                            *
+* Preconditions: Arrival times may be given in increasing order              *
+*                                                                            *
+* Output: To each client: after burst is completed, the value in the "clock" *
+*         and a turnaround time                                              *
+*         On server: the ready queue (periodically), the client's completion *
+*         time, when all clients are done report the average turnaround time *
+*                                                                            *
+* Postconditions: None                                                       *
+*                                                                            *
+* Estimated Time: 3 days                                                     *
+*                                                                            *
+* Actual Time: TBA                                                           *
+*                                                                            *
+* Algorithm: For server ->                                                   *
+*            Define a struct for input from client                           *
+*            Define a struct for output to client                            *
+*            Create commonFIFO                                               *
+*            Open commonFIFO for reading                                     *
+*            Ask user for number of clients and timeQuant                    *
+*            For (each client):                                              *
+*                Read from the commonFIFO                                    *
+*                Create a node for client                                    *
+*                Enqueue to a queue name Ready                               *
+*            End For.                                                        *
+*            Create privateFIFO                                              *
+*            Open privateFIFO for writing                                    *
+*            Subtract timeQuant from burst for each client                   *
+*            Dequeue client and place at end of queue if burst is complete   *
+*                or timeQuant is complete                                    *
+*            When clients burst is completed                                 *
+*                Output clock value and turnaround time for client           *
+*                to clients private FIFO; output completed time on server    *
+*            When all clients are done, output average turnaround time       *
+*            END SERVER                                                      *
+*                                                                            *
+*            For client ->                                                   *
+*            Define struct for output to server                              *
+*            Define struct for input from server                             *
+*            Get burst value and arrival time from user                      *
+*            Assign struct values to input values from user                  *
+*            Open commonFIFO for writing                                     *
+*            Write the struct defined above to the commonFIFO                *
+*            Open privateFIFO for reading                                    *
+*            Read output from server from privateFIFO into input struct      *
+*            Display the results from the server to the user nicely          *
+*            Close privateFIFO                                               *
+*            END CLIENT                                                      *
+*****************************************************************************/
